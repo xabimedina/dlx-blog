@@ -26,7 +26,7 @@ imágenes a Storage bajo `blog/images/`.
   title: string;
   excerpt: string;       // resumen para listado + meta description
   content: string;       // HTML (editor WYSIWYG)
-  coverImage: string;    // path de Storage → URL firmada al renderizar
+  coverImage: string;    // path de Storage → URL estable del blog al renderizar
   images: string[];      // galería opcional (paths de Storage)
   author: string;
   tags: string[];
@@ -41,9 +41,10 @@ imágenes a Storage bajo `blog/images/`.
 
 | Ruta            | Descripción                          |
 | --------------- | ------------------------------------ |
-| `/`             | Redirige a `/blog`                   |
-| `/blog`         | Listado de artículos (ISR 1800s)     |
+| `/`             | Listado de artículos (ISR 1800s)     |
+| `/blog`         | Redirige a `/`                       |
 | `/blog/[slug]`  | Detalle del artículo (ISR 1800s)     |
+| `/api/blog-image/[...path]` | Imágenes estables del blog |
 | `/sitemap.xml`  | Sitemap dinámico                     |
 | `/robots.txt`   | Robots                               |
 
@@ -59,7 +60,7 @@ CLIENT_EMAIL=...
 NPM_TOKEN=...   # para instalar @xabimedina/dlx-components desde GitHub Packages
 ```
 
-> Ajusta `SITE.url` en `src/lib/site.ts` al dominio real de despliegue.
+`SITE.url` apunta al dominio de producción `https://blog.despejalax.es`.
 
 ## Desarrollo
 

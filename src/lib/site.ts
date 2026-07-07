@@ -4,7 +4,7 @@ export const SITE = {
   shortName: 'Despeja la X',
   description:
     'Ideas sobre arquitectura, interiorismo y diseño contemporáneo desde el estudio Despeja la X.',
-  // URL canónica del blog. Ajustar al dominio real de despliegue.
+  // URL canónica del blog en producción.
   url: 'https://blog.despejalax.es',
   // Web principal del estudio (para el enlace de vuelta en el navbar).
   mainSite: 'https://www.despejalax.es',

@@ -2,7 +2,7 @@
  * Modelo de datos de un artículo del blog.
  * Coincide con la estructura de la colección `blog` en Firestore.
  * Las imágenes (`coverImage`, `images`) se guardan como paths de Storage y se
- * resuelven a URLs firmadas en la capa de servidor (ver `get-blog-posts.ts`).
+ * resuelven a URLs estables del blog en la capa de servidor.
  */
 export interface BlogPost {
   id: string;
@@ -10,7 +10,7 @@ export interface BlogPost {
   title: string;
   excerpt: string; // resumen para listado + meta description
   content: string; // HTML enriquecido (guardado desde el editor del admin)
-  coverImage: string; // path de Storage → URL firmada al resolver
+  coverImage: string; // path de Storage → URL estable al resolver
   images: string[]; // galería opcional (paths de Storage)
   author: string;
   tags: string[];

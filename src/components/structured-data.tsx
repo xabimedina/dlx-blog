@@ -1,4 +1,5 @@
-import Script from 'next/script';
+import { getBlogImageUrl } from '@/lib/blog-images';
+import { getPostDescription } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 import type { BlogPost } from '@/types/post';
 
@@ -8,12 +9,13 @@ interface StructuredDataProps {
 }
 
 export function StructuredData({ data, id = 'structured-data' }: StructuredDataProps) {
+  const json = JSON.stringify(data).replace(/</g, '\\u003c');
+
   return (
-    <Script
+    <script
       id={id}
       type='application/ld+json'
-      strategy='afterInteractive'
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: json }}
     />
   );
 }
@@ -56,17 +58,24 @@ export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
 
 /** JSON-LD `BlogPosting` para la página de detalle de un artículo. */
 export function generateArticleSchema(post: BlogPost) {
-  const cleanExcerpt = post.excerpt || post.content.replace(/<[^>]*>/g, '').substring(0, 200);
+  const cleanExcerpt = getPostDescription({
+    excerpt: post.excerpt,
+    content: post.content,
+    maxLength: 200,
+  });
+  const imageUrl = post.coverImage
+    ? getBlogImageUrl(post.coverImage, SITE.url)
+    : undefined;
 
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
     description: cleanExcerpt,
-    image: post.coverImage
+    image: imageUrl
       ? {
           '@type': 'ImageObject',
-          url: post.coverImage,
+          url: imageUrl,
           width: 1200,
           height: 630,
           caption: post.title,

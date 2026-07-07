@@ -5,7 +5,13 @@ import { SITE } from '@/lib/site';
 export const revalidate = 1800;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = await getAllPosts();
+  let posts: Awaited<ReturnType<typeof getAllPosts>> = [];
+
+  try {
+    posts = await getAllPosts();
+  } catch (err) {
+    console.error('[sitemap] Error loading posts:', err);
+  }
 
   const postEntries: MetadataRoute.Sitemap = posts.map(post => ({
     url: `${SITE.url}/blog/${post.slug}`,

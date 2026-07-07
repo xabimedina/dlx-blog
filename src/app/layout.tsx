@@ -33,8 +33,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/brand/dlx-logo-black.png',
-        width: 1200,
-        height: 630,
+        width: 4174,
+        height: 1241,
         alt: 'Despeja la X',
       },
     ],

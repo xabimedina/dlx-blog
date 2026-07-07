@@ -14,7 +14,7 @@ const description =
   'Artículos sobre arquitectura, interiorismo y diseño del estudio Despeja la X.';
 
 export const metadata: Metadata = {
-  title: 'Blog',
+  title: { absolute: 'Blog Despeja la X - Arquitectura e Interiorismo' },
   description,
   alternates: { canonical: '/' },
   openGraph: {
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/brand/dlx-logo-black.png',
-        width: 1200,
-        height: 630,
+        width: 4174,
+        height: 1241,
         alt: 'Despeja la X',
       },
     ],

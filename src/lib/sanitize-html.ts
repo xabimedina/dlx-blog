@@ -79,6 +79,8 @@ function isSafeLink(url: string): boolean {
 }
 
 function isSafeImageUrl(url: string): boolean {
+  if (url.startsWith('/api/blog-image/')) return true;
+
   try {
     const parsed = new URL(url);
     return ['storage.googleapis.com', 'firebasestorage.googleapis.com'].includes(
