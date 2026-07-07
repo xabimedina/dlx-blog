@@ -1,0 +1,75 @@
+@import 'tailwindcss';
+@import '../../../node_modules/@xabimedina/dlx-components/dist/theme.css';
+
+body {
+  background: var(--smoke);
+  color: var(--jet);
+  font-family: var(--font-montserrat);
+  scroll-behavior: smooth;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Webkit */
+}
+
+/* Tipografía del contenido enriquecido del post (HTML guardado desde el editor) */
+.post-content {
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  color: var(--jet);
+}
+.post-content > * + * {
+  margin-top: 1.25rem;
+}
+.post-content h2 {
+  font-family: var(--font-kanit);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-top: 2.5rem;
+}
+.post-content h3 {
+  font-family: var(--font-kanit);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+.post-content a {
+  color: var(--jet);
+  text-decoration: underline;
+  text-decoration-color: var(--saffron);
+  text-underline-offset: 3px;
+}
+.post-content strong {
+  font-weight: 600;
+}
+.post-content ul,
+.post-content ol {
+  padding-left: 1.5rem;
+}
+.post-content ul {
+  list-style: disc;
+}
+.post-content ol {
+  list-style: decimal;
+}
+.post-content li + li {
+  margin-top: 0.5rem;
+}
+.post-content blockquote {
+  border-left: 3px solid var(--saffron);
+  padding-left: 1.25rem;
+  font-style: italic;
+  color: color-mix(in oklch, var(--jet) 80%, transparent);
+}
+.post-content img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
