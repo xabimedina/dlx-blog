@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getAllPosts, getPostBySlug } from '@/server/firebase/api';
+import { getAllPosts, getFooterProjects, getPostBySlug } from '@/server/firebase/api';
 import PostDetail from '@/components/pages/blog/post-detail';
 import {
   StructuredData,
@@ -74,7 +74,10 @@ export default async function Post({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const [post, footerProjects] = await Promise.all([
+    getPostBySlug(slug),
+    getFooterProjects(),
+  ]);
 
   if (!post) return notFound();
 
@@ -90,7 +93,7 @@ export default async function Post({
         id='breadcrumb-schema'
         data={generateBreadcrumbSchema(breadcrumbItems)}
       />
-      <PostDetail post={post} />
+      <PostDetail post={post} footerProjects={footerProjects} />
     </>
   );
 }

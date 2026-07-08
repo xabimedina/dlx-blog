@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getAllPosts } from '@/server/firebase/api';
+import { getAllPosts, getFooterProjects } from '@/server/firebase/api';
 import BlogPage from '@/components/pages/blog';
 import { SITE } from '@/lib/site';
 import {
@@ -40,7 +40,10 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const posts = await getAllPosts();
+  const [posts, footerProjects] = await Promise.all([
+    getAllPosts(),
+    getFooterProjects(),
+  ]);
 
   return (
     <>
@@ -49,7 +52,7 @@ export default async function Home() {
         id='breadcrumb-schema'
         data={generateBreadcrumbSchema([{ name: 'Blog', url: '/' }])}
       />
-      <BlogPage posts={posts} />
+      <BlogPage posts={posts} footerProjects={footerProjects} />
     </>
   );
 }
