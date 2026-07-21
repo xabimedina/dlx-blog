@@ -27,7 +27,7 @@ export default function PostDetail({
   return (
     <>
       <div className='relative z-[40] bg-smoke'>
-        <DlxNavbar type='smoke' logoHref={SITE.mainSite}>
+        <DlxNavbar type='smoke'>
           <NavLinks />
         </DlxNavbar>
 
