@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@next/third-parties": "^16.2.9",
-    "@xabimedina/dlx-components": "^1.0.17",
+    "@xabimedina/dlx-components": "^1.0.18",
     "firebase": "^12.15.0",
     "firebase-admin": "^14.0.0",
     "lucide-react": "^1.21.0",
